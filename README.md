@@ -15,38 +15,33 @@
 
 
 ### Association
-
-- has_many :room_users
-- has_many :rooms, through: room_users
-- has_many :messages
+- has_many :prototypes
+- has_many :comments
 
 ## comments テーブル
 
-| Column    | Type       | Options     |
-| --------- | ---------- | ----------- |
-| text      | text       | null: false |
-| user      | references | null: false |
-| prototype | references | null: false |
+| Column    | Type       | Options           |
+| --------- | ---------- | ----------------- |
+| text      | text       | null: false       |
+| user      | references | foreign_key: true |
+| prototype | references | foreign_key: true |
 
 ### Association
 
-- has_many :room_users
-- has_many :users, through: room_users
-- has_many :messages
+- belongs_to :prototype
+- belongs_to :user
 
 ## prototypes テーブル
 
-| Column     | Type          | Options                        |
-| ---------- | ------------- | ------------------------------ |
-| title      | string        | null: false,                   |
-| catch_copy | text          | null: false,                   |
-| concept    | text          | null: false                    |
-| image      | ActiveStorage | null: false,foreign_key: true  |
-| user       | references    | null: false                    |
+| Column     | Type          | Options            |
+| ---------- | ------------- | ------------------ |
+| title      | string        | null: false,       |
+| catch_copy | text          | null: false,       |
+| concept    | text          | null: false        |
+| user       | references    | foreign_key: true  |
 
 ### Association
 
-- belongs_to :room
 - belongs_to :user
-
+- has_many :comments
 
