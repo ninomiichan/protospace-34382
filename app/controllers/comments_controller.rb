@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
       @comments = @prototype.comments
       render "prototypes/show"
     end
+    comment = Comment.create(comment_params)
   end
 
   private
