@@ -29,6 +29,7 @@ class PrototypesController < ApplicationController
   end
 
   def update
+    
     if @prototype.update(prototype_params)
       redirect_to prototype_path(@prototype)
     else
@@ -55,7 +56,7 @@ class PrototypesController < ApplicationController
   end
 
   def contributor_confirmation
-    unless current_user == @prototype.user.id
+    unless current_user.id == @prototype.user.id
     redirect_to root_path
     end
   end
